@@ -50,19 +50,19 @@ read
 echo -e "${BLUE}Creating a file mega.img, 1MB large.${RESET}"
 touch mega.img
 dd if=/dev/zero of=~/mega.img bs=1M count=1
-fdisk -l ./mega.img
+sudo fdisk -l ./mega.img
 echo ""
 echo -e "${BLUE}Now we'll partition the file mega.img with fdisk. It will prompt"
 echo -e "you for options. You choose these in THIS order: ${RED}o-n-4xENTER-w"
 echo -e "${YELLOW}HIT ENTER${RESET}"
 read
-fdisk ./mega.img
+sudo fdisk ./mega.img
 echo -e "${BLUE}Showing a partitioned file:${RESET}"
-fdisk -l ./mega.img
+sudo fdisk -l ./mega.img
 echo -e "${YELLOW}HIT ENTER${RESET}"
 read
 echo -e "${BLUE}Creating a file system: Choose ${RED}'y'${BLUE} when prompted.${RESET}"
-mkfs.ext2 ./mega.img
+sudo mkfs.ext2 ./mega.img
 mkdir mymnt
 echo -e "${BLUE}Mounting mymnt as a filesystem:${RESET}"
 sudo mount mega.img mymnt/
