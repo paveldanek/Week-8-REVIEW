@@ -88,7 +88,7 @@ echo -e "${YELLOW}HIT ENTER${RESET}"
 read
 cd ..
 echo -e "${BLUE}We'll unmount the mymnt filesystem;"
-echo -e "${RED}please enter it's path:${RESET}"
+echo -e "${RED}please enter its path:${RESET}"
 read MyPATH
 sudo umount $MyPATH
 hexdump -C mega.img | less
