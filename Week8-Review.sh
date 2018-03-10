@@ -1,9 +1,9 @@
 #! /bin/bash
 
-RED='\033[0;31m'
+RED='\033[1;31m'
 YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-GREEN='\033[0;32m'
+BLUE='\033[1;34m'
+GREEN='\033[1;32m'
 RESET='\033[0m'
 
 cd ~
@@ -63,7 +63,7 @@ echo -e "${YELLOW}HIT ENTER${RESET}"
 read
 echo -e "${BLUE}Creating a file system: Choose ${RED}'y'${BLUE} when prompted.${RESET}"
 sudo mkfs.ext2 ./mega.img
-mkdir mymnt
+sudo mkdir mymnt
 echo -e "${BLUE}Mounting mymnt as a filesystem:${RESET}"
 sudo mount mega.img mymnt/
 echo -e "${BLUE}Existing Block Devices.${RESET}"
@@ -87,11 +87,14 @@ ls
 echo -e "${YELLOW}HIT ENTER${RESET}"
 read
 cd ..
-echo -e "${BLUE}We'll unmount the mymnt filesystem; please enter it's path:${RESET}"
+echo -e "${BLUE}We'll unmount the mymnt filesystem;"
+echo -e "${RED}please enter it's path:${RESET}"
 read MyPATH
 sudo umount $MyPATH
 hexdump -C mega.img | less
-rmdir mymnt
+echo -e "${YELLOW}HIT ENTER${RESET}"
+read
+sudo rmdir mymnt
 rm mega.img
 touch a                         # Writing the run-level report into a file a.
 who -r > a
@@ -106,6 +109,7 @@ done
 rm a                            # Removing file a.
 echo ""
 echo -e "${BLUE}By the way, your computer is utilizing the run-level number ${RED}$c${BLUE}.${RESET}"
+echo ""
 cd ~
 echo -e "${BLUE}Now we'll create a unit named ${GREEN}test1.target ${BLUE}and ${GREEN}test2.target ${BLUE}with dependency"
 echo -e "on ${GREEN}test1.target${BLUE}.${RESET}"
