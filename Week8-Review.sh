@@ -107,6 +107,12 @@ for word in $(<a); do           # Parsing through all words in file a.
     b=b+1
 done
 rm a                            # Removing file a.
+
+# UPDATE: Apparently, I now found a much easier way to store a part
+# of a command's output in a variable:
+# c=$(who -r | awk '{print $2}')
+# With this, I can replace all lines from "touch a" to "rm a".
+
 echo ""
 echo -e "${BLUE}By the way, your computer is utilizing the run-level number ${RED}$c${BLUE}.${RESET}"
 echo ""
